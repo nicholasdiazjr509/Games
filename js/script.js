@@ -1,7 +1,4 @@
- "use strict"
-
-
-var game={
+var game = {
     level: 1,
     turn: 0,
     difficulty: 1,
@@ -49,15 +46,15 @@ var game={
         this.randomPad(this.level);
         this.displaySequence();
     },
-    flash: function(element, times, speed, pad) {
-         var that = this;
+    flash: function (element, times, speed, pad) {
+        var that = this;
         if (times > 0) {
             that.playSound(pad);
             element.stop().animate({opacity: '1'}, {
                 duration: 50,
-                complete: function(){
+                complete: function () {
                     element.stop().animate({opacity: '0.6'}, 200);
-                }
+                }//"animation" to create a flash
             });
         }
         if (this > 0) {
@@ -71,13 +68,13 @@ var game={
     playSound: function (clip) {
         var sound = $('.sound' + clip)[0];
         //console.log(sound);
-       // console.log($('.sound' + clip));
+        // console.log($('.sound' + clip));
         sound.currentTime = 0;
         sound.play();
     },
 
     randomPad: function (passes) {
-         var i;
+        var i;
         for (i = 0; i < passes; i++) {
             this.genSequence.push(Math.floor(Math.random() * 4) + 1);
         }
@@ -105,12 +102,12 @@ var game={
         }
     },
 
-   displaySequence: function(){
+    displaySequence: function () {
         var that = this;
-        $.each(this.genSequence, function(index, val) {
-            setTimeout(function(){
+        $.each(this.genSequence, function (index, val) {
+            setTimeout(function () {
                 that.flash($(that.shape + val), 1, 300, val);
-            }, 500*index*that.difficulty);
+            }, 500 * index * that.difficulty);
         });
     },
 
@@ -125,7 +122,7 @@ var game={
     keepScore: function () {
         var multiplier = 0;
 
-        switch(this.difficulty) {
+        switch (this.difficulty) {
             case '2':
                 multiplier = 1;
                 break;
@@ -142,33 +139,27 @@ var game={
         this.score += (multiplier);
         this.displayScore();
     },
-wrongSequence: function(){
-     var correctPad = this.genSequence[this.turn],
-        that = this;
-    this.active = false;
-    this.displayLevel();
-    this.displayScore();
+    wrongSequence: function () {
+        var correctPad = this.genSequence[this.turn],
+            that = this;
+        this.active = false;
+        this.displayLevel();
+        this.displayScore();
 
-    setTimeout(function () {
-        that.flash($(that.shape + correctPad), 4, 300, correctPad);
-    }, 500);
+        setTimeout(function () {
+            that.flash($(that.shape + correctPad), 3, 300, correctPad);
+        }, 500);
 
-    $('.start').show();
-    $('.difficulty').show();
+        $('.start').show();
+        $('.difficulty').show();
     }
 };
- $(document).ready(function() {
-      $('.start').on('mouseup', function(){
-         $(this).hide();
-         game.difficulty = $('input[name=difficulty]:checked').val();
-         $('.difficulty').hide();
-         game.init();
-     });
+$(document).ready(function () {
+    $('.start').on('mouseup', function () {
+        $(this).hide();
+        game.difficulty = $('input[name=difficulty]:checked').val();
+        $('.difficulty').hide();
+        game.init();
+    });
 
- });
-
-
-
-
-
-
+});
