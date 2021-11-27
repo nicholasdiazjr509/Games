@@ -3,7 +3,7 @@ body{
     text-align: center;
     margin-top: 35px;
 }
-.panel{
+.pad{
     width:200px;
     height:200px;
     display: inline-block;
@@ -14,23 +14,23 @@ body{
     opacity: 0.6;
 }
 
-
-.bottom-right{
+.shape1{
+    border-top-left-radius: 200px;
+    background-color: yellow;
+}
+.shape4{
 
    border-bottom-right-radius: 200px;
    background-color: blue;
 }
-.bottom-left{
+.shape3{
 
     border-bottom-left-radius: 200px;
     background-color: green;
     clear: left;
 }
-.top-left{
-    border-top-left-radius: 200px;
-    background-color: yellow;
-}
-.top-right{
+
+.shape2{
 
     border-top-right-radius: 200px;
     background-color: red;
@@ -61,6 +61,7 @@ body{
     border-radius: 100%;
 }
 .level, .score{
+    color: red ;
     width: 50%;
     float: left;
     text-align: center;
@@ -75,12 +76,20 @@ body{
     text-align: center;
 }
 ul{
+
     list-style: none;
     margin: 0 0 20px 0;
     padding:0;
     text-align: center;
 }
 li{
+    color: lightskyblue;
     display: inline-block;
     padding: 3px;
+}
+h1{
+    font-style: italic;
+    font-size: 34px;
+    color: red;
+    text-align: -moz-center;
 }

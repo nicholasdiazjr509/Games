@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Simon Sedso 3</title>
+    <title>Simon Sedso vs.3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" >
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
-            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-            crossorigin="anonymous"></script>
+<!--    <meta http-equiv="X-UA-Compatible" content="" >-->
+        <script src="lib/jquery-2.2.4.js"></script>
+<!--    <script src="https://code.jquery.com/jquery-2.2.4.min.js"-->
+<!--            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="-->
+<!--            crossorigin="anonymous"></script>-->
     <link rel="stylesheet" href="css/styles3.css">
     <script src="js/script3.js" type="text/javascript"></script>
 </head>
@@ -15,30 +16,32 @@
 <div class="wrapper">
     <div class="rear-circle">
 
-                    <div class="panel top-left" data-pad="1">
-                        <audio preload="auto" class="simonSound1">
-                            <source src="sounds/mp3/simonSound1.mp3" type="audio/mp3"/>
+                    <div class="pad top-left shape1" data-pad="1">
+                        <audio preload="auto" class="sound1">
+                            <source src="sounds/mp3/sounds_01.mp3" type="audio/mp3"/>
                         </audio>
                     </div>
-                    <div class="panel top-right" data-pad="2">
-                        <audio preload="auto" class="simonSound2">
-                            <source src="sounds/mp3/simonSound2.mp3" type="audio/mp3"/>
+                    <div class="pad top-right shape2" data-pad="2">
+                        <audio preload="auto" class="sound2">
+                            <source src="sounds/mp3/sounds_02.mp3" type="audio/mp3"/>
                         </audio>
                     </div>
 
 
-                    <div class="panel bottom-left" data-pad="3">
-                        <audio preload="auto" class="simonSound3">
-                            <source src="sounds/mp3/simonSound3.mp3" type="audio/mp3"/>
+                    <div class="pad bottom-left shape3" data-pad="3">
+                        <audio preload="auto" class="sound3">
+                            <source src="sounds/mp3/sounds_03.mp3" type="audio/mp3"/>
                         </audio>
                     </div>
-                    <div class="panel bottom-right" data-pad="4">
-                        <audio preload="auto" class="simonSound4">
-                            <source src="sounds/mp3/simonSound4.mp3" type="audio/mp3"/>
+                    <div class="pad bottom-right shape4" data-pad="4">
+                        <audio preload="auto" class="sound4">
+                            <source src="sounds/mp3/sounds_04.mp3" type="audio/mp3"/>
                         </audio>
                     </div>
         </div>
-        <div class="circle"></div>
+        <div class="circle">
+            <h1> Simon<br> Sedso'</h1>
+        </div>
     </div>
 
     <div class="level">
@@ -47,31 +50,31 @@
     <div class="score">
         <h1>Score: 0</h1>
     </div>
+
     <ul class="difficulty">
         <li>
             <label>
                 <input type="radio" class="difOption" name="difficulty" value="2" >
-            </label>
+            </label>Easy Peasy
         </li>
         <li>
             <label>
                 <input type="radio" class="difOption" name="difficulty" value="1" checked>
-            </label>
+            </label>Normal
         </li>
         <li>
             <label>
                 <input type="radio" class="difOption" name="difficulty" value="0.5">
-            </label>
+            </label>Hard
         </li>
         <li>
             <label>
                 <input type="radio" class="difOption" name="difficulty" value="0.25">
-            </label>
+            </label>Are you insane??
         </li>
     </ul>
     <div class="startBtn">
         <button class="start">START</button>
     </div>
-</div>
 </body>
 </html>

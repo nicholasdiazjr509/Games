@@ -17,14 +17,12 @@ var game ={
     },
     initPanelHandler: function(){
         var that = this;
-        $('.panel').on('mouseup', function() {
-            that.flash($(this), 1, 300, panel);
-           if(that.active === this){
-
-            var panel = parseInt($(this).data('panel'), 10);
-            that.flash($(this), 1, 300, panel);
-            that.logPlayerSequence(panel);
-        }
+        $('.pad').on('mouseup', function() {
+            if(that.active === true) {
+                var pad = parseInt($(this).data('pad'), 10);
+                that.flash($(this), 1, 300, pad);
+                that.logPlayerSequence(pad);
+            }
     });
         this.handler = true;
 },
@@ -33,6 +31,7 @@ var game ={
         this.level = 1;
         this.newLevel();
         this.displayScore();
+        this.displayLevel();
     },
     newLevel: function(){
         this.genSequence.length = 0;
@@ -43,10 +42,11 @@ var game ={
         this.randomPanel(this.level);
         this.displaySequence();
     },
-    flash: function(element, times, speed, panel) {
+    flash: function(element, times, speed, pad) {
         var that = this;
         if (times > 0) {
-            element.stop().animate({opacity: "1"},
+            that.playSound(pad)
+            element.stop().animate({opacity: '1'},
                 {
                     duration: 50,
                     complete: function () {
@@ -56,29 +56,29 @@ var game ={
         }
         if (this > 0) {
             setTimeout(function () {
-                that.flash(element, times, speed, panel);
+                that.flash(element, times, speed, pad);
             }, speed);
             times -= 1;
         }
     },
     playSound: function(clip){
-    var sound = $('.sound' + clip)[0];
-    sound.currentTime = 0;
-    sound.play();
+        var sound = $('.sound' + clip)[0];
+        sound.currentTime=0;
+        sound.play();
 },
-randomPanel: function(passes){
+    randomPanel: function(passes){
     var i
     for(i = 0; i < passes; i++){
         this.genSequence.push(Math.floor(Math.random() * 4) +1);
     }
 },
-    logPlayerSequence: function(panel){
-        this.playSequence.push(panel);
-        this.checkSequence(panel);
+    logPlayerSequence: function(pad){
+        this.playerSequence.push(pad);
+        this.checkSequence(pad);
 },
-    checkSequence: function(panel){
+    checkSequence: function(pad){
         var that = this;
-    if( panel !== this.genSequence[this.turn]){
+    if( pad !== this.genSequence[this.turn]){
         this.wrongSequence();
     }else{
         this.keepScore();
@@ -95,7 +95,7 @@ randomPanel: function(passes){
 },
     displaySequence: function(){
     var that = this;
-    $(this.genSequence, function(index, val){
+    $.each(this.genSequence, function(index, val){
         setTimeout(function () {
             that.flash($(that.shape + val), 1, 300, val);
         }, 500 *index * that.difficulty);
@@ -103,8 +103,12 @@ randomPanel: function(passes){
 
 },
     displayLevel: function(){
-        $('.score h1').text('Score: ' + this.score);
+        $('.level h1').text('Level: ' + this.level);
 },
+    displayScore: function(){
+        $('.score h1').text('Score: ' + this.score);
+    },
+
     keepScore: function(){
         var multiplier = 0;
         switch(this.difficulty){
@@ -140,9 +144,9 @@ randomPanel: function(passes){
 };
 $(document).ready(function(){
     $('.start').on('mouseup', function() {
-        $('this').hide();
+        $(this).hide();//had ' '  in (this)!!! ffs
         game.difficulty = $('input[name = difficulty]:checked').val();
-        $('difficulty').hide();
+        $('.difficulty').hide();
         game.init();
     });
 
