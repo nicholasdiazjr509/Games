@@ -1,5 +1,6 @@
 var game ={
     level: 1,
+
     turn: 0,
     score: 0,
     difficulty: 1,
@@ -19,6 +20,7 @@ var game ={
         var that = this;
         $('.pad').on('mouseup', function() {
             if(that.active === true) {
+
                 var pad = parseInt($(this).data('pad'), 10);
                 that.flash($(this), 1, 300, pad);
                 that.logPlayerSequence(pad);
@@ -108,7 +110,9 @@ var game ={
     displayScore: function(){
         $('.score h1').text('Score: ' + this.score);
     },
-
+    gameOver: function(){
+        $('.game-over').hide();
+    },
     keepScore: function(){
         var multiplier = 0;
         switch(this.difficulty){
@@ -135,18 +139,23 @@ var game ={
         this.displayLevel();
         this.displayScore();
 
+
         setTimeout(function(){
         that.flash($(that.shape + correctPanel), 3, 300, correctPanel);
         }, 500);
     $('.start').show();
     $('.difficulty').show();
-    }
+    $('.gameOver').show();
+    },
+
 };
 $(document).ready(function(){
     $('.start').on('mouseup', function() {
         $(this).hide();//had ' '  in (this)!!! ffs
+
         game.difficulty = $('input[name = difficulty]:checked').val();
         $('.difficulty').hide();
+        $('.gameOver').hide();
         game.init();
     });
 
