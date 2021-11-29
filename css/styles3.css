@@ -1,7 +1,7 @@
 body{
-    background-color: gray;
+    background-color: slategray;
     text-align: center;
-    margin-top: 45px;
+    margin-top: 50px;
 }
 .pad{
     width:200px;
@@ -40,6 +40,8 @@ body{
     position: relative;
     width: 640px;
     margin: 0 auto;
+    left: 90px;
+    top: 35px;
 }
 .rear-circle{
     position: absolute;
@@ -61,20 +63,28 @@ body{
     border-radius: 100%;
 }
 .level, .score{
-    color: red ;
     width: 50%;
     float: left;
     text-align: center;
+    font-family: sans-serif;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
 }
 .gameOver{
     color: red;
     text-align: right;
     width: 55%;
-    font-size: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    font-family: "Baby Kruffy" ;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 .startBtn{
     width: 30%;
     margin: 0 auto;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 .start{
     width: 60%;
@@ -95,7 +105,7 @@ li{
 }
 h1{
     font-style: italic;
-    font-size: 34px;
-    color: limegreen;
+    font-size: 38px;
+    color: yellow;
     text-align: -moz-center;
 }

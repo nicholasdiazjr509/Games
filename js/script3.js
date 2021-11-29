@@ -1,6 +1,5 @@
 var game ={
     level: 1,
-
     turn: 0,
     score: 0,
     difficulty: 1,
@@ -63,9 +62,23 @@ var game ={
             times -= 1;
         }
     },
+    wrongSequence: function(){
+        var correctPad = this.genSequence[this.turn],
+            that = this;
+        this.active = false;
+        this.displayLevel();
+        this.displayScore();
+
+        setTimeout(function(){
+            that.flash($(that.shape + correctPad), 3, 300, correctPad);
+        }, 500);
+        $('.start').show();
+        $('.difficulty').show();
+        $('.gameOver').show();
+    },
     playSound: function(clip){
         var sound = $('.sound' + clip)[0];
-        sound.currentTime=0;
+        sound.currentTime = 0;
         sound.play();
 },
     randomPanel: function(passes){
@@ -110,9 +123,9 @@ var game ={
     displayScore: function(){
         $('.score h1').text('Score: ' + this.score);
     },
-    gameOver: function(){
-        $('.game-over').hide();
-    },
+    // gameOver: function(){
+    //     $('.game-over').hide();
+    // },
     keepScore: function(){
         var multiplier = 0;
         switch(this.difficulty){
@@ -132,27 +145,15 @@ var game ={
         this.score += (multiplier);
         this.displayScore();
     },
-    wrongSequence: function(){
-        var correctPanel = this.genSequence[this.turn],
-            that = this;
-        this.active = false;
-        this.displayLevel();
-        this.displayScore();
 
-
-        setTimeout(function(){
-        that.flash($(that.shape + correctPanel), 3, 300, correctPanel);
-        }, 500);
-    $('.start').show();
-    $('.difficulty').show();
-    $('.gameOver').show();
-    },
 
 };
 $(document).ready(function(){
     $('.start').on('mouseup', function() {
         $(this).hide();//had ' '  in (this)!!! ffs
-
+            $('#start').click(function(){
+                location.reload();
+            });
         game.difficulty = $('input[name = difficulty]:checked').val();
         $('.difficulty').hide();
         $('.gameOver').hide();
