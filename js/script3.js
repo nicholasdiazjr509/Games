@@ -1,13 +1,18 @@
 var game ={
+
     level: 1,
     turn: 0,
     score: 0,
     difficulty: 1,
     handler: false,
+    //if a turn is active
     active: false,
+    //if a turn is active
     shape: '.shape',
+    //a cache to hold the pad/panel class
     genSequence: [],
     playerSequence: [],
+    //array's for  the generated pads/panels the user selections.
 
     init: function() {
         if(this.handler === false){
@@ -45,6 +50,7 @@ var game ={
     },
     flash: function(element, times, speed, pad) {
         var that = this;
+        //the cache
         if (times > 0) {
             that.playSound(pad)
             element.stop().animate({opacity: '1'},
@@ -52,6 +58,7 @@ var game ={
                     duration: 50,
                     complete: function () {
                         element.stop().animate({opacity: '0.6'}, 200);
+       //used opacity for the flash simulation plus the sound to play with pads
                     }
                 });
         }
@@ -60,6 +67,7 @@ var game ={
                 that.flash(element, times, speed, pad);
             }, speed);
             times -= 1;
+            //minus 1 for each time its called
         }
     },
     wrongSequence: function(){
@@ -71,7 +79,7 @@ var game ={
 
         setTimeout(function(){
             that.flash($(that.shape + correctPad), 3, 300, correctPad);
-        }, 500);
+        }, 500);//seems to be correct, but doesn't flash 3 times
         $('.start').show();
         $('.difficulty').show();
         $('.gameOver').show();
@@ -85,6 +93,7 @@ var game ={
     var i
     for(i = 0; i < passes; i++){
         this.genSequence.push(Math.floor(Math.random() * 4) +1);
+    //random number generator and pushes them  to the gen number array, depends on what level
     }
 },
     logPlayerSequence: function(pad){
@@ -99,7 +108,11 @@ var game ={
         this.keepScore();
         this.turn++;
     }
-    if(this.turn === this.genSequence.length){
+        // if(this.score === 42) {
+        //     let Thefivenotes;
+        //     alert("you won!!" + Thefivenotes);
+        // }
+        if(this.turn === this.genSequence.length){
         this.level++;
         this.displayLevel();
         this.active = false;
@@ -115,13 +128,15 @@ var game ={
             that.flash($(that.shape + val), 1, 300, val);
         }, 500 *index * that.difficulty);
     });
-
+//goes over each value in the gen array and multiplies timeout by how  many times in the array
+// so tht they play in sequential order and times the difficulty modifier.
 },
     displayLevel: function(){
         $('.level h1').text('Level: ' + this.level);
 },
     displayScore: function(){
         $('.score h1').text('Score: ' + this.score);
+
     },
     // gameOver: function(){
     //     $('.game-over').hide();
@@ -144,6 +159,7 @@ var game ={
         }
         this.score += (multiplier);
         this.displayScore();
+
     },
 
 
