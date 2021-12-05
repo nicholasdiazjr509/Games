@@ -13,6 +13,7 @@ var game ={
     genSequence: [],
     playerSequence: [],
     //array's for  the generated pads/panels the user selections.
+    Thefivenotes: '.sound',
 
     init: function() {
         if(this.handler === false){
@@ -108,10 +109,7 @@ var game ={
         this.keepScore();
         this.turn++;
     }
-        // if(this.score === 42) {
-        //     let Thefivenotes;
-        //     alert("you won!!" + Thefivenotes);
-        // }
+
         if(this.turn === this.genSequence.length){
         this.level++;
         this.displayLevel();
@@ -119,6 +117,10 @@ var game ={
         setTimeout(function () {
             that.newLevel();
         }, 1000);
+            if(this.score === 42) {
+                let Thefivenotes;
+                alert("you won!!" );
+            }
     }
 },
     displaySequence: function(){
