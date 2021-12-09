@@ -1,0 +1,111 @@
+body{
+    background-color: slategray;
+    text-align: center;
+    margin-top: 50px;
+}
+.pad{
+    width:200px;
+    height:200px;
+    display: inline-block;
+    z-index: 1;
+    margin: 10px;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity)";
+    filter: alpha(opacity = 60);
+    opacity: 0.6;
+}
+
+.shape1{
+    border-top-left-radius: 200px;
+    background-color: yellow;
+}
+.shape4{
+
+   border-bottom-right-radius: 200px;
+   background-color: blue;
+}
+.shape3{
+
+    border-bottom-left-radius: 200px;
+    background-color: green;
+    clear: left;
+}
+
+.shape2{
+
+    border-top-right-radius: 200px;
+    background-color: red;
+    clear: right;
+}
+.wrapper {
+    position: relative;
+    width: 640px;
+    margin: 0 auto;
+    left: 90px;
+    top: 35px;
+}
+.rear-circle{
+    position: absolute;
+    top: 185px;
+    width: 465px;
+    height: 448px;
+    z-index: 0;
+    background-color: #000;
+    border-radius: 350px;
+}
+.circle{
+    display: inline-block;
+    position: absolute;
+    top: 305px;
+    left: 133px;
+    width: 200px;
+    height: 200px;
+    background: #000;
+    border-radius: 100%;
+}
+.level, .score{
+    width: 50%;
+    float: left;
+    text-align: center;
+    font-family: sans-serif;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+.gameOver{
+    color: red;
+    text-align: right;
+    width: 55%;
+    font-size: 35px;
+    font-weight: bold;
+    font-family: "Baby Kruffy" ;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+.startBtn{
+    width: 30%;
+    margin: 0 auto;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+.start{
+    width: 60%;
+    height: 20px;
+    text-align: center;
+}
+ul{
+
+    list-style: none;
+    margin: 0 0 20px 0;
+    padding:0;
+    text-align: center;
+}
+li{
+    color: lightskyblue;
+    display: inline-block;
+    padding: 3px;
+}
+h1{
+    font-style: italic;
+    font-size: 38px;
+    color: yellow;
+    text-align: -moz-center;
+}
